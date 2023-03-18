@@ -6,8 +6,10 @@ This was made with Node.js v18.15.0 - older versions may work, but the latest LT
 release is recommended. <https://nodejs.org>
 
 1. Clone the repository.
-2. In the repository's directory, run `npm install -g`
-3. After that you can now enter `LuxorFontFactory` in a command prompt to invoke
+2. In the repository's directory, run `npm install --save-dev`
+3. In the same directory, run `npm run build`
+4. Finally, run `npm install -g`
+5. After that you can now enter `LuxorFontFactory` in a command prompt to invoke
    the program.
 
 ## Usage
