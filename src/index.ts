@@ -64,10 +64,14 @@ loadbm(
 
         // now we check if every character has the exact same height
         // as it's lineHeight
+        
+        // actualHeight will be used for AR
+        let actualHeight;
+        
         f.chars.forEach(char => {
             // f.info.padding = [ up, right, down, left ]
             let paddedHeight = f.info.padding[0] + f.info.padding[2]
-            let actualHeight = f.common.lineHeight + paddedHeight
+            actualHeight = f.common.lineHeight + paddedHeight
             if (char.height != actualHeight) {
                 console.log(
                     `Error: Character "${String.fromCharCode(
@@ -130,8 +134,9 @@ loadbm(
             let out = [];
             out.push(
                 `data/bitmaps/fonts/${material}.jpg`,
-                `data/bitmaps/fonts/${material}_alpha.jpg`,
-                `1 ${f.common.lineHeight}`
+                `data/bitmaps/fonts/${material}_alpha.tga`,
+                `${actualHeight}`,
+                `1 ${f.chars.length}`
             );
             f.chars.forEach((char) => {
                 out.push(
@@ -140,7 +145,7 @@ loadbm(
                 );
             });
             out.push(''); // There's a newline at the end of the file
-            let outstring = out.join('\n');
+            let outstring = out.join('\r\n');
 
             fs.writeFile(`./${outfile}`, outstring, () => {
                 exit(0);
