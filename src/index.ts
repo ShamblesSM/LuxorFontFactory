@@ -65,13 +65,16 @@ loadbm(
         // now we check if every character has the exact same height
         // as it's lineHeight
         f.chars.forEach(char => {
-            if (char.height != f.common.lineHeight) {
+            // f.info.padding = [ up, right, down, left ]
+            let paddedHeight = f.info.padding[0] + f.info.padding[2]
+            let actualHeight = f.common.lineHeight + paddedHeight
+            if (char.height != actualHeight) {
                 console.log(
                     `Error: Character "${String.fromCharCode(
                         char.id
                     )} has inequal line height (${
                         char.height
-                    }) from common line height (${f.common.lineHeight}). Make sure "Equalize line heights" is checked.`
+                    }) from common line height (${f.common.lineHeight}).\nMake sure "Equalize line heights" is checked.`
                 );
                 exit(1);
             }
