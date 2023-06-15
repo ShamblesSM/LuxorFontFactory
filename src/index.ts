@@ -33,6 +33,10 @@ program
         '-p, --png',
         'Use PNG instead of JPG+TGA (can be only used with -2)'
     )
+    .option(
+        '-d --debug',
+        'Print font info for debugging'
+    )
     .parse();
 
 const options = program.opts();
@@ -67,6 +71,10 @@ loadbm(
         
         // actualHeight will be used for AR
         let actualHeight;
+
+        if (options.debug) {
+            console.log(f)
+        }
         
         f.chars.forEach(char => {
             // f.info.padding = [ up, right, down, left ]
