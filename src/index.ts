@@ -78,7 +78,7 @@ loadbm(
         
         f.chars.forEach(char => {
             // f.info.padding = [ up, right, down, left ]
-            let paddedHeight = f.info.padding[0] + f.info.padding[2]
+            let paddedHeight = (f.info.padding[0] + f.info.padding[2]) + (f.info.outline*2)
             actualHeight = f.common.lineHeight + paddedHeight
             if (char.height != actualHeight) {
                 console.log(
